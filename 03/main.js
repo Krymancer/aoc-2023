@@ -2,18 +2,14 @@ const mainInput = require('fs').readFileSync('input.txt', 'utf8').split('\n');
 const testInput = require('fs').readFileSync('test-input.txt', 'utf8').split('\n');
 const testInput2 = require('fs').readFileSync('test-input-2.txt', 'utf8').split('\n');
 
-const input = testInput2;
+const input = mainInput;
 
 function isCharNumber(char) {
   return typeof char === 'string' && char >= '0' && char <= '9';
 }
 
-function isCharDot(char) {
-  return char === '.';
-}
-
 function isSymbol(char) {
-  return !(isCharNumber(char) || isCharDot(char)) && char !== null;
+  return !isCharNumber(char) && char !== '.' && char !== null;
 }
 
 const grid = input.map(row => row.split(''));
@@ -24,12 +20,6 @@ const rows = grid.length;
 
 for(let i = 0; i < rows; i ++ ) {
   for(let j = 0; j < cols; j ++ ) {
-    // check if is a symbol
-    // if is a symbol go to the adjacent cells and check if there is a number
-    // if there is a number, check for the start of the number and the end of the number
-    // make sure to mark if a number takes more than one adjancent cell to no count the number twice
-    // save the number;
-
     // Check if the cell is a symbol
     if(isSymbol(grid[i][j])) {
 
@@ -78,6 +68,5 @@ for(let i = 0; i < rows; i ++ ) {
     }
   }
 }
-
 const sum = partNumbers.reduce((acc, curr) => acc + Number(curr), 0);
 console.log(sum);
