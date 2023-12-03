@@ -1,4 +1,4 @@
-const input = require('fs').readFileSync('input.txt', 'utf8').split('\n');
+const input = require('fs').readFileSync('pedro.txt', 'utf8').split('\n');
 
 // const bag = {
 //   'red': 12,
